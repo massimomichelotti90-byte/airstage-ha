@@ -1,0 +1,31 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Fujitsu AIRSTAGE Cloud",
+        "description": "Use the same account and region configured in the AIRSTAGE app.",
+        "data": {
+          "base_url": "Service region",
+          "username": "Email",
+          "password": "Password",
+          "country": "Country configured in the AIRSTAGE account",
+          "language": "Language code"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "The account credentials were rejected.",
+      "cannot_connect": "Could not connect to the AIRSTAGE cloud service.",
+      "no_devices": "No AIRSTAGE devices were found for this account."
+    },
+    "abort": {
+      "already_configured": "This account is already configured."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "indoor_temperature": { "name": "Indoor temperature" },
+      "outdoor_temperature": { "name": "Outdoor temperature" }
+    }
+  }
+}

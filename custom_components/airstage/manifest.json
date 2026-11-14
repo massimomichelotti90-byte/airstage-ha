@@ -1,0 +1,11 @@
+{
+  "domain": "airstage",
+  "name": "Fujitsu AIRSTAGE Cloud",
+  "codeowners": ["@massimomichelotti90-byte"],
+  "config_flow": true,
+  "documentation": "https://github.com/massimomichelotti90-byte/airstage-ha",
+  "issue_tracker": "https://github.com/massimomichelotti90-byte/airstage-ha/issues",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "version": "0.3.0"
+}

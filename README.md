@@ -33,4 +33,3 @@ Fan speed is not exposed yet because its cloud parameter mapping has not been co
 ## Notes
 
 The AIRSTAGE cloud API is undocumented and may vary by region, account, or controller model. This is an unofficial community integration.
-
