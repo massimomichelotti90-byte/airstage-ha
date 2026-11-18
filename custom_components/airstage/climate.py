@@ -13,7 +13,7 @@ from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .api import parameter_map, target_celsius, temperature_celsius
+from .api import InvalidAuth, parameter_map, target_celsius, temperature_celsius
 from .const import DOMAIN, HA_MODES, OP_MODES
 from .coordinator import AirstageCoordinator
 
@@ -94,5 +94,9 @@ class AirstageClimate(CoordinatorEntity[AirstageCoordinator], ClimateEntity):
                 for name, value in values.items()
             ])
             await self.coordinator.async_request_refresh()
+        except InvalidAuth as err:
+            raise HomeAssistantError(
+                "AIRSTAGE account credentials are invalid. Reauthenticate the integration."
+            ) from err
         except (ClientError, TimeoutError, ValueError) as err:
             raise HomeAssistantError("Could not send command to AIRSTAGE Cloud") from err

@@ -6,10 +6,11 @@ import logging
 from typing import Any
 
 from aiohttp import ClientError
+from homeassistant.config_entries import ConfigEntryAuthFailed
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from .api import AirstageApi
+from .api import AirstageApi, InvalidAuth
 from .const import DOMAIN, SCAN_INTERVAL
 
 _LOGGER = logging.getLogger(__name__)
@@ -25,6 +26,8 @@ class AirstageCoordinator(DataUpdateCoordinator[dict[str, dict[str, Any]]]):
     async def _async_update_data(self) -> dict[str, dict[str, Any]]:
         try:
             devices = await self.api.devices()
+        except InvalidAuth as err:
+            raise ConfigEntryAuthFailed("AIRSTAGE account credentials are invalid") from err
         except (ClientError, TimeoutError, ValueError) as err:
             raise UpdateFailed(f"Unable to retrieve AIRSTAGE devices: {err}") from err
         return {

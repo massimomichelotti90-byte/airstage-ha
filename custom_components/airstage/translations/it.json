@@ -11,6 +11,13 @@
           "country": "Paese configurato nell'account AIRSTAGE",
           "language": "Codice lingua"
         }
+      },
+      "reauth_confirm": {
+        "title": "Accedi di nuovo a AIRSTAGE Cloud",
+        "description": "Inserisci la nuova password per {email}.",
+        "data": {
+          "password": "Nuova password"
+        }
       }
     },
     "error": {
@@ -19,7 +26,8 @@
       "no_devices": "Nessun dispositivo AIRSTAGE trovato per questo account."
     },
     "abort": {
-      "already_configured": "Questo account è già configurato."
+      "already_configured": "Questo account è già configurato.",
+      "reauth_successful": "Accesso all'account AIRSTAGE aggiornato correttamente."
     }
   },
   "entity": {

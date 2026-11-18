@@ -66,6 +66,8 @@ class AirstageApi:
                 await self._refresh_or_login()
                 async with self._session.request(method, f"{self._base_url}{path}", json=json,
                                                 headers=self._headers()) as retry:
+                    if retry.status in (401, 403):
+                        raise InvalidAuth from None
                     retry.raise_for_status()
                     return await retry.json()
             response.raise_for_status()
